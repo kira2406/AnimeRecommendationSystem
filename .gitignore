@@ -1,0 +1,11 @@
+venv/
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+artifacts/
+logs/
+*.log
+*.out
+*.err
+*.egg-info/
