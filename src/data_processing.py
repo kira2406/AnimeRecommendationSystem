@@ -28,7 +28,7 @@ class DataProcessor:
         self.anime2anime_decoded = {}
 
         os.makedirs(self.output_dir, exist_ok=True)
-        logger.info("DataProcessing Initialized")
+        logger.info("DATA PROCESSING INITIALIZED")
 
     def load_data(self, usecols):
         try:
@@ -174,7 +174,7 @@ class DataProcessor:
 
             self.process_anime_data()
 
-            logger.info("Data Processing Pipeline ran successfully")
+            logger.info("DATA PROCESSING PIPELINE ran successfully")
         except CustomException as ce:
             logger.error(str(ce))
 
