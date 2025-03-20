@@ -7,6 +7,7 @@ from src.logger import get_logger
 from src.custom_exception import CustomException
 from src.base_model import BaseModel
 from config.paths_config import *
+from dotenv import load_dotenv
 
 logger = get_logger(__name__)
 
@@ -14,8 +15,11 @@ class ModelTraining:
     def __init__(self, data_path):
         self.data_path = data_path
 
+        load_dotenv()
+        comet_ml_apikey = os.getenv("COMET_ML_APIKEY")
+
         self.experiment = comet_ml.Experiment(
-            api_key="wHFcv270Qr45VL9SIbDJHAOrh",
+            api_key=comet_ml_apikey,
             project_name="anime-recommendation-system",
             workspace="kira2406"
         )
