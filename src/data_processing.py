@@ -18,7 +18,7 @@ class DataProcessor:
         self.rating_df = None
         self.anime_df = None
         self.X_train_array = None
-        self.X_test_Array = None
+        self.X_test_array = None
         self.y_train = None
         self.y_test = None
 
@@ -78,7 +78,7 @@ class DataProcessor:
         
     def split_data(self, test_size=1000, random_state=43):
         try:
-            self.rating_df.sample(frac=1, random_state=random_state).reset_index(drop=True)
+            self.rating_df.sample(frac=1, random_state=43).reset_index(drop=True)
             X = self.rating_df[["user", "anime"]].values
             y = self.rating_df["rating"]
 
@@ -114,7 +114,7 @@ class DataProcessor:
                 logger.info(f"{name} artifact saved successfully")
 
             joblib.dump(self.X_train_array,X_TRAIN_ARRAY)
-            joblib.dump(self.X_test_Array,X_TEST_ARRAY)
+            joblib.dump(self.X_test_array,X_TEST_ARRAY)
             joblib.dump(self.y_train,Y_TRAIN)
             joblib.dump(self.y_test,Y_TEST)
 
