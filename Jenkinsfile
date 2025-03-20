@@ -6,6 +6,7 @@ pipeline{
         GCP_PROJECT = 'eminent-yen-454107-u0'
         GCLOUD_PATH = "/var/jenkins_home/google-cloud-sdk/bin"
         KUBECTL_AUTH_PLUGIN = "/usr/lib/google-cloud-sdk/bin"
+        COMET_ML_APIKEY = credentials('COMET_ML_APIKEY')
     }
 
     stages{
@@ -14,6 +15,17 @@ pipeline{
                 script{
                     echo 'Cloning from Github'
                     checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-token', url: 'https://github.com/kira2406/AnimeRecommendationSystem.git']])
+                }
+            }
+        }
+
+        stage("Set Up Environment") {
+            steps {
+                script {
+                    echo "Creating .env file..."
+                    sh """
+                    echo "COMET_ML_APIKEY=${COMET_ML_APIKEY}" > .env
+                    """
                 }
             }
         }
